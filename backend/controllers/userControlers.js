@@ -159,7 +159,7 @@ const followAndUnfollow = expressasynchandler(async (req, res) => {
       error: "User does not exist",
     });
   }
-  const isAlreadyFollow = isExits.followers.find(req.user._id);
+  const isAlreadyFollow = isExits.followers.includes(req.user._id);
   try {
     if (!isAlreadyFollow) {
       isExits.followers.push(req.user._id);

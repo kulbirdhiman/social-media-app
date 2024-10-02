@@ -4,6 +4,7 @@ import cookieParser from "cookie-parser";
 import connectDb from "./db/connectDb.js";
 //routes
 import userRoutes from './routes/userRoutes.js'
+import postRoutes from './routes/postRoutes.js'
 import dotenv from 'dotenv'
 
 dotenv.config()
@@ -16,5 +17,6 @@ const port = process.env.PORT || 4000;
 
 //routes
 app.use("/api/user",userRoutes)
+app.use("/api/post",postRoutes)
 
 app.listen(port, () => console.log(`server up on ${port}`));
