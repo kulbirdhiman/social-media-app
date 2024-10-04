@@ -62,7 +62,7 @@ const toggleLike = expressAsyncHandler(async (req, res) => {
 const comenetPost = expressAsyncHandler(async (req, res) => {
   const { content } = req.body;
   const { id } = req.params;
-  
+
   const comments = {
     user: req.user._id,
     content,
@@ -94,11 +94,11 @@ const comenetPost = expressAsyncHandler(async (req, res) => {
 
 const deletePost = expressAsyncHandler(async (req, res) => {
   const { id } = req.params;
-  const postcreated = await Post.findById(id)
-  if(!postcreated.auther === req.user._id){
+  const postcreated = await Post.findById(id);
+  if (!postcreated.auther === req.user._id) {
     res.status(404).json({
-      message : "you are not owner of this post"
-    })
+      message: "you are not owner of this post",
+    });
   }
   try {
     const deleted = await Post.findByIdAndDelete(id);
@@ -111,4 +111,4 @@ const deletePost = expressAsyncHandler(async (req, res) => {
     });
   }
 });
-export { createPost, getallPost, toggleLike, comenetPost,deletePost };
+export { createPost, getallPost, toggleLike, comenetPost, deletePost };
